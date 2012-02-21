@@ -1,0 +1,1 @@
+adt -package -target ipa-app-store -storetype pkcs12 -keystore devapp.p12 -provisioning-profile devapp.mobileprovision iap.ipa info-app.xml ANE_IAP_Example.swf -extdir .
