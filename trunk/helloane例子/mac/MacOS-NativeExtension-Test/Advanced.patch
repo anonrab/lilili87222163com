@@ -1,0 +1,93 @@
+*** Advanced.as	2011-10-20 05:15:38.000000000 +0900
+--- /Users/daoki2/Develop/ane/macosx/MacOS-NativeExtension/NativeExtensions/01 - create swc/src/com/airrt/extensions/Advanced.as	2011-11-27 17:53:26.000000000 +0900
+***************
+*** 10,15 ****
+--- 10,16 ----
+  package com.airrt.extensions
+  {
+  	import flash.external.ExtensionContext;
++ 	import flash.utils.ByteArray;
+  	
+  	// This class gives the option of running three simple tasks either directly on ActionScript or
+  	// using native code through native extensions.  'mode' determines which code to use.
+***************
+*** 27,39 ****
+  
+  			if ( arraySz > 0 ) {
+  				largeArray = new Array( arraySz );
+  				
+  				// Initialize a large array in ascending order, so that sorting in descending
+  				// order takes longer
+  				
+  				for ( var i:int = 0 ; i < arraySz ; i++ ) {
+! 					largeArray[i] = i;
+  				}
+  			}
+  		}
+  	
+--- 28,46 ----
+  
+  			if ( arraySz > 0 ) {
+  				largeArray = new Array( arraySz );
++ 				byteData = new ByteArray();
+  				
+  				// Initialize a large array in ascending order, so that sorting in descending
+  				// order takes longer
+  				
+  				for ( var i:int = 0 ; i < arraySz ; i++ ) {
+! 					largeArray[i] = i;					
+! 					byteData.writeByte(i & 0xff);
+! 					byteData.writeByte((i >> 8) & 0xff);
+! 					byteData.writeByte((i >> 16) & 0xff);
+! 					byteData.writeByte((i >> 24) & 0xff);
+  				}
++ 				byteData.position = 0;
+  			}
+  		}
+  	
+***************
+*** 142,148 ****
+  			}
+  			else {								// Native Code
+  				prefix = String("[Native Code]: ");
+! 				ctx.call( "timeLongOp", largeArray );
+  			}
+  			
+  			// Timestamp after sorting array.
+--- 149,155 ----
+  			}
+  			else {								// Native Code
+  				prefix = String("[Native Code]: ");
+! 				ctx.call( "timeLongOp", byteData );
+  			}
+  			
+  			// Timestamp after sorting array.
+***************
+*** 156,163 ****
+--- 163,178 ----
+  				
+  			// Capture a few elements of the sorted array.
+  			arrayElems = "";
++ 			var data:int;
++ 			
+  			for ( i = 0 ; i < 5 ; i++ ) {
++ 			    if (mode == 0) {
+  				arrayElems += String(largeArray[i]) + " ";
++ 			    } else {
++ 				data = ((byteData.readByte() & 0xff)) | ((byteData.readByte() & 0xff) << 8) | ((byteData.readByte() & 0xff) << 16) | ((byteData.readByte() & 0xff) << 24);
++ 				arrayElems += String(data) + " "; 
++ 			    }
++ 			    
+  			}
+  			sorted = arrayElems + "...";			
+  						
+***************
+*** 176,181 ****
+--- 191,197 ----
+  		
+  		private var ctx : ExtensionContext;
+  		private var largeArray : Array;
++ 	    private var byteData : ByteArray;
+  		private var unsorted : String;
+  		private var sorted : String;
+  		private var delta : Number;

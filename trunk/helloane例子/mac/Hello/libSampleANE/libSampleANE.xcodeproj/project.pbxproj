@@ -1,0 +1,296 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BD3ACE8D14821DC50024274B /* Adobe AIR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD3ACE8C14821DC50024274B /* Adobe AIR.framework */; };
+		BD7B0F1B1480F02900102BF4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD7B0F1A1480F02900102BF4 /* Cocoa.framework */; };
+		BD7B0F251480F02900102BF4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BD7B0F231480F02900102BF4 /* InfoPlist.strings */; };
+		BD7B0F301480F05A00102BF4 /* libSampleANE.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD7B0F2F1480F05A00102BF4 /* libSampleANE.cpp */; };
+		BD7B0F321480F07500102BF4 /* libSampleANE.h in Headers */ = {isa = PBXBuildFile; fileRef = BD7B0F311480F07500102BF4 /* libSampleANE.h */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		BD3ACE8C14821DC50024274B /* Adobe AIR.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "Adobe AIR.framework"; path = "../../../../../Applications/Adobe Flash Builder 4.6/sdks/AIRSDK_3.1/runtimes/air/mac/Adobe AIR.framework"; sourceTree = "<group>"; };
+		BD7B0F171480F02900102BF4 /* libSampleANE.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = libSampleANE.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD7B0F1A1480F02900102BF4 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		BD7B0F1D1480F02900102BF4 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		BD7B0F1E1480F02900102BF4 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		BD7B0F1F1480F02900102BF4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		BD7B0F221480F02900102BF4 /* libSampleANE-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "libSampleANE-Info.plist"; sourceTree = "<group>"; };
+		BD7B0F241480F02900102BF4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BD7B0F261480F02900102BF4 /* libSampleANE-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "libSampleANE-Prefix.pch"; sourceTree = "<group>"; };
+		BD7B0F2F1480F05A00102BF4 /* libSampleANE.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = libSampleANE.cpp; sourceTree = "<group>"; };
+		BD7B0F311480F07500102BF4 /* libSampleANE.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = libSampleANE.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BD7B0F131480F02900102BF4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD7B0F1B1480F02900102BF4 /* Cocoa.framework in Frameworks */,
+				BD3ACE8D14821DC50024274B /* Adobe AIR.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BD7B0F0B1480F02900102BF4 = {
+			isa = PBXGroup;
+			children = (
+				BD7B0F201480F02900102BF4 /* libSampleANE */,
+				BD7B0F191480F02900102BF4 /* Frameworks */,
+				BD7B0F181480F02900102BF4 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BD7B0F181480F02900102BF4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BD7B0F171480F02900102BF4 /* libSampleANE.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BD7B0F191480F02900102BF4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BD3ACE8C14821DC50024274B /* Adobe AIR.framework */,
+				BD7B0F1A1480F02900102BF4 /* Cocoa.framework */,
+				BD7B0F1C1480F02900102BF4 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BD7B0F1C1480F02900102BF4 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BD7B0F1D1480F02900102BF4 /* AppKit.framework */,
+				BD7B0F1E1480F02900102BF4 /* CoreData.framework */,
+				BD7B0F1F1480F02900102BF4 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		BD7B0F201480F02900102BF4 /* libSampleANE */ = {
+			isa = PBXGroup;
+			children = (
+				BD7B0F211480F02900102BF4 /* Supporting Files */,
+				BD7B0F2F1480F05A00102BF4 /* libSampleANE.cpp */,
+				BD7B0F311480F07500102BF4 /* libSampleANE.h */,
+			);
+			path = libSampleANE;
+			sourceTree = "<group>";
+		};
+		BD7B0F211480F02900102BF4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BD7B0F221480F02900102BF4 /* libSampleANE-Info.plist */,
+				BD7B0F231480F02900102BF4 /* InfoPlist.strings */,
+				BD7B0F261480F02900102BF4 /* libSampleANE-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		BD7B0F141480F02900102BF4 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD7B0F321480F07500102BF4 /* libSampleANE.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		BD7B0F161480F02900102BF4 /* libSampleANE */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BD7B0F2C1480F02900102BF4 /* Build configuration list for PBXNativeTarget "libSampleANE" */;
+			buildPhases = (
+				BD7B0F121480F02900102BF4 /* Sources */,
+				BD7B0F131480F02900102BF4 /* Frameworks */,
+				BD7B0F141480F02900102BF4 /* Headers */,
+				BD7B0F151480F02900102BF4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = libSampleANE;
+			productName = libSampleANE;
+			productReference = BD7B0F171480F02900102BF4 /* libSampleANE.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BD7B0F0D1480F02900102BF4 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = BD7B0F101480F02900102BF4 /* Build configuration list for PBXProject "libSampleANE" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = BD7B0F0B1480F02900102BF4;
+			productRefGroup = BD7B0F181480F02900102BF4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BD7B0F161480F02900102BF4 /* libSampleANE */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BD7B0F151480F02900102BF4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD7B0F251480F02900102BF4 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BD7B0F121480F02900102BF4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD7B0F301480F05A00102BF4 /* libSampleANE.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		BD7B0F231480F02900102BF4 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BD7B0F241480F02900102BF4 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BD7B0F2A1480F02900102BF4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = NO;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		BD7B0F2B1480F02900102BF4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		BD7B0F2D1480F02900102BF4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SYSTEM_APPS_DIR)/Adobe Flash Builder 4.6/sdks/AIRSDK_3.1/runtimes/air/mac\"",
+				);
+				FRAMEWORK_VERSION = A;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "libSampleANE/libSampleANE-Prefix.pch";
+				INFOPLIST_FILE = "libSampleANE/libSampleANE-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Debug;
+		};
+		BD7B0F2E1480F02900102BF4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SYSTEM_APPS_DIR)/Adobe Flash Builder 4.6/sdks/AIRSDK_3.1/runtimes/air/mac\"",
+				);
+				FRAMEWORK_VERSION = A;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "libSampleANE/libSampleANE-Prefix.pch";
+				INFOPLIST_FILE = "libSampleANE/libSampleANE-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BD7B0F101480F02900102BF4 /* Build configuration list for PBXProject "libSampleANE" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BD7B0F2A1480F02900102BF4 /* Debug */,
+				BD7B0F2B1480F02900102BF4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BD7B0F2C1480F02900102BF4 /* Build configuration list for PBXNativeTarget "libSampleANE" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BD7B0F2D1480F02900102BF4 /* Debug */,
+				BD7B0F2E1480F02900102BF4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BD7B0F0D1480F02900102BF4 /* Project object */;
+}
