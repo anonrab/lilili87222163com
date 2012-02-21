@@ -1,0 +1,109 @@
+*** TestNativeExtension.cpp	2011-10-20 05:34:50.000000000 +0900
+--- /Users/daoki2/Develop/ane/macosx/MacOS-NativeExtension/NativeExtensions/02 - create platform extension/mac/TestNativeExtension/TestNativeExtension.cpp	2011-11-27 17:54:03.000000000 +0900
+***************
+*** 10,16 ****
+  #include <stdlib.h>
+  #include <stdio.h>
+  #include <string.h>
+! #include <Adobe AIR/Adobe AIR.h>
+  
+  
+  // Symbols tagged with EXPORT are externally visible.
+--- 10,16 ----
+  #include <stdlib.h>
+  #include <stdio.h>
+  #include <string.h>
+! #include "FlashRuntimeExtensions.h"
+  
+  
+  // Symbols tagged with EXPORT are externally visible.
+***************
+*** 131,199 ****
+  	// having the create a C array to sort, and recreate the Array returned to the caller.
+  	FREObject _Advanced_timeLongOp(FREContext ctx, void* functionData, uint32_t argc, FREObject argv[])
+  	{
+! 		uint32_t arrayLength;
+! 		int32_t* largeArray;
+! 		FREObject obj;
+  		
+! 		// Get the array elements, one by one, place in largeArray, sort, and return result (in the
+! 		// same input array?)
+! 		
+! 		FREResult result = FREGetArrayLength(argv[0], &arrayLength);
+! 		if ( result != FRE_OK || arrayLength == 0 ) {
+! 			return (FREObject)NULL;
+! 		}
+! 		
+! 		// Assume we are getting an array of ActionScript int's, 32-bit in size.
+! 		if ( !( largeArray = (int32_t *)malloc( arrayLength * sizeof(int32_t) ) ) ) {
+  			return (FREObject)NULL;
+  		}
+  		
+- 		// Copy input array to sort internally
+- 		for ( uint32_t i = 0; i < arrayLength; i++ ) {
+- 			result = FREGetArrayElementAt( argv[0], i, &obj );
+- 			if ( result != FRE_OK ) {
+- 				return (FREObject)NULL;
+- 			}
+- 			
+- 			result = FREGetObjectAsInt32( obj, &largeArray[ i ]);
+- 			if ( result != FRE_OK ) {
+- 				return (FREObject)NULL;
+- 			}
+- 		}
+- 
+- #if 0
+- 		// Test
+- 		printf("Array length: %d\n", arrayLength);
+- 		printf("Input Array:\n");
+- 		for (uint32_t i; i < 10; i++) {
+- 			printf("    Elem %d : $d\n", i, largeArray[ i ]);
+- 		}
+- #endif
+- 				
+  		// Sort the array
+! 		qsort( largeArray, arrayLength, sizeof(int32_t), cmpFcn );
+! 
+! #if 0
+! 		// Test
+! 		printf("Sorted Array:\n");
+! 		for (uint32_t i; i < 10; i++) {
+! 			printf("    Elem %d : $d\n", i, largeArray[ i ]);
+! 		}
+! #endif
+! 		
+! 		// Copy sorted result back
+! 		for ( uint32_t i = 0; i < arrayLength; i++ ) {
+! 			result = FRENewObjectFromInt32( largeArray[ i ], &obj );
+! 			if ( result != FRE_OK ) {
+! 				return (FREObject)NULL;
+! 			}
+! 			
+! 			result = FRESetArrayElementAt( argv[0], i, obj );
+! 			if ( result != FRE_OK ) {
+! 				return (FREObject)NULL;
+! 			}			
+! 		}		
+  
+  		return (FREObject)NULL;
+  	}
+  
+--- 131,148 ----
+  	// having the create a C array to sort, and recreate the Array returned to the caller.
+  	FREObject _Advanced_timeLongOp(FREContext ctx, void* functionData, uint32_t argc, FREObject argv[])
+  	{
+! 		FREByteArray bytedata;
+  		
+! 		FREResult result = FREAcquireByteArray(argv[0], &bytedata);
+! 		if ( result != FRE_OK) {
+  			return (FREObject)NULL;
+  		}
+  		
+  		// Sort the array
+! 		qsort(&bytedata.bytes[0], bytedata.length/4, sizeof(int32_t), cmpFcn );
+  
++ 		FREReleaseByteArray(argv[0]);
++ 		
+  		return (FREObject)NULL;
+  	}
+  

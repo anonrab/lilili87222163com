@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:WindowedApplication xmlns:fx="http://ns.adobe.com/mxml/2009" 
+					   xmlns:s="library://ns.adobe.com/flex/spark" 
+					   xmlns:mx="library://ns.adobe.com/flex/mx" creationComplete="init()">
+	
+	<fx:Script>
+		<![CDATA[
+			import com.chocbanana.ane.SampleANE
+			import mx.controls.Alert;
+			
+			private var sample:SampleANE;
+			
+			private function init():void{
+				this.sample = new SampleANE();
+			}
+			protected function btn_getTestString_clickHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				var str:String = sample.getTestString();
+				Alert.show(str);
+			}
+			
+			protected function btn_isSupported_clickHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				var bool:Boolean = sample.isSupported();
+				Alert.show(bool.toString());
+			}
+			
+			protected function btn_getHelloWorld_clickHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				var str:String = sample.getHelloWorld();
+				Alert.show(str);
+			}
+			
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<!-- 非ビジュアルエレメント (サービス、値オブジェクトなど) をここに配置 -->
+	</fx:Declarations>
+	<s:Button id="btn_isSupported" x="113" y="217" label="isSupported"
+			  click="btn_isSupported_clickHandler(event)"/>
+	<s:Button id="btn_getTestString" x="112" y="183" label="TestString"
+			  click="btn_getTestString_clickHandler(event)"/>
+	<s:Button id="btn_getHelloWorld" x="113" y="247" label="HelloWorld"
+			  click="btn_getHelloWorld_clickHandler(event)"/>
+</s:WindowedApplication>
