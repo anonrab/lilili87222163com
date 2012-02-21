@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding ="utf-8"?>
+<swc xmlns="http://www.adobe.com/flash/swccatalog/9">
+  <versions>
+    <swc version="1.2" />
+    <flex version="4.5.1" build="21328" minimumSupportedVersion="3.0.0" />
+  </versions>
+  <features>
+    <feature-script-deps />
+    <feature-files />
+  </features>
+  <libraries>
+    <library path="library.swf">
+      <script name="com/adobe/nativeExtensions/GyroscopeIntervalValue" mod="1315846251000" signatureChecksum="2548848815" >
+        <def id="com.adobe.nativeExtensions:GyroscopeIntervalValue" /> 
+        <dep id="Error" type="e" /> 
+        <dep id="AS3" type="n" /> 
+        <dep id="Object" type="i" /> 
+      </script>
+      <script name="com/adobe/nativeExtensions/Gyroscope" mod="1315846132000" signatureChecksum="2605882016" >
+        <def id="com.adobe.nativeExtensions:Gyroscope" /> 
+        <dep id="com.adobe.nativeExtensions:GyroscopeIntervalValue" type="e" /> 
+        <dep id="trace" type="e" /> 
+        <dep id="flash.utils:Timer" type="e" /> 
+        <dep id="flash.events:StatusEvent" type="e" /> 
+        <dep id="com.adobe.nativeExtensions:GyroscopeEvent" type="e" /> 
+        <dep id="flash.events:TimerEvent" type="e" /> 
+        <dep id="flash.external:ExtensionContext" type="e" /> 
+        <dep id="Error" type="e" /> 
+        <dep id="flash.utils:Timer" type="s" /> 
+        <dep id="flash.events:StatusEvent" type="s" /> 
+        <dep id="flash.events:TimerEvent" type="s" /> 
+        <dep id="flash.external:ExtensionContext" type="s" /> 
+        <dep id="AS3" type="n" /> 
+        <dep id="flash.events:EventDispatcher" type="i" /> 
+      </script>
+      <script name="_ccf25e1d07c3ab5b269f60a43beb100283b148ec8d89e1bfa3938f495b6f4fe6_flash_display_Sprite" mod="1315846252130" signatureChecksum="1650949045" >
+        <def id="_ccf25e1d07c3ab5b269f60a43beb100283b148ec8d89e1bfa3938f495b6f4fe6_flash_display_Sprite" /> 
+        <dep id="flash.system:Security" type="e" /> 
+        <dep id="AS3" type="n" /> 
+        <dep id="flash.display:Sprite" type="i" /> 
+      </script>
+      <script name="com/adobe/nativeExtensions/GyroscopeEvent" mod="1315846239000" signatureChecksum="1189570190" >
+        <def id="com.adobe.nativeExtensions:GyroscopeEvent" /> 
+        <dep id="AS3" type="n" /> 
+        <dep id="flash.events:Event" type="i" /> 
+      </script>
+      <digests>
+        <digest type="SHA-256" signed="false" value="a2407a3f12b92f9fd96095456b292d83db7b886862e9c7885605b415c3228e53"   />
+      </digests>
+    </library>
+  </libraries>
+  <files>
+  </files>
+</swc>
