@@ -1,0 +1,1 @@
+adt -package -target ane a.ane my.xml -swc in.swc -platform iPhone-ARM library.swf in.a

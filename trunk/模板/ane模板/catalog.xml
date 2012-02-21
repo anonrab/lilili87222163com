@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding ="utf-8"?>
+<swc xmlns="http://www.adobe.com/flash/swccatalog/9">
+  <versions>
+    <swc version="1.2" />
+    <flex version="4.5.1" build="21328" minimumSupportedVersion="3.0.0" />
+  </versions>
+  <features>
+    <feature-script-deps />
+    <feature-files />
+  </features>
+  <libraries>
+    <library path="library.swf">
+      <script name="_6ebd02237166451fc0d4f2a89cd73811dd77d9884c17441758857077bffda3ef_flash_display_Sprite" mod="1317970213789" signatureChecksum="3581245863" >
+        <def id="_6ebd02237166451fc0d4f2a89cd73811dd77d9884c17441758857077bffda3ef_flash_display_Sprite" /> 
+        <dep id="flash.system:Security" type="e" /> 
+        <dep id="AS3" type="n" /> 
+        <dep id="flash.display:Sprite" type="i" /> 
+      </script>
+      <script name="com/adobe/nativeExtensions/Base64" mod="1309532416000" signatureChecksum="1529763738" >
+        <def id="com.adobe.nativeExtensions:Base64" /> 
+        <dep id="AS3" type="n" /> 
+        <dep id="Object" type="i" /> 
+      </script>
+      <script name="com/adobe/nativeExtensions/AppPurchase" mod="1309542686000" signatureChecksum="3781738073" >
+        <def id="com.adobe.nativeExtensions:AppPurchase" /> 
+        <dep id="com.adobe.nativeExtensions:Base64" type="e" /> 
+        <dep id="com.adobe.nativeExtensions:Product" type="e" /> 
+        <dep id="Date" type="e" /> 
+        <dep id="com.adobe.nativeExtensions:Transaction" type="e" /> 
+        <dep id="trace" type="e" /> 
+        <dep id="flash.events:StatusEvent" type="e" /> 
+        <dep id="com.adobe.nativeExtensions:AppPurchaseEvent" type="e" /> 
+        <dep id="XML" type="e" /> 
+        <dep id="flash.external:ExtensionContext" type="e" /> 
+        <dep id="Error" type="e" /> 
+        <dep id="Date" type="s" /> 
+        <dep id="com.adobe.nativeExtensions:Transaction" type="s" /> 
+        <dep id="flash.events:StatusEvent" type="s" /> 
+        <dep id="XML" type="s" /> 
+        <dep id="flash.external:ExtensionContext" type="s" /> 
+        <dep id="AS3" type="n" /> 
+        <dep id="flash.events:EventDispatcher" type="i" /> 
+      </script>
+      <script name="com/adobe/nativeExtensions/AppPurchaseEvent" mod="1309526958000" signatureChecksum="830519655" >
+        <def id="com.adobe.nativeExtensions:AppPurchaseEvent" /> 
+        <dep id="AS3" type="n" /> 
+        <dep id="flash.events:Event" type="i" /> 
+      </script>
+      <script name="com/adobe/nativeExtensions/Transaction" mod="1309354599000" signatureChecksum="2320418115" >
+        <def id="com.adobe.nativeExtensions:Transaction" /> 
+        <dep id="Date" type="s" /> 
+        <dep id="AS3" type="n" /> 
+        <dep id="Object" type="i" /> 
+      </script>
+      <script name="com/adobe/nativeExtensions/Product" mod="1309325379000" signatureChecksum="3990247633" >
+        <def id="com.adobe.nativeExtensions:Product" /> 
+        <dep id="AS3" type="n" /> 
+        <dep id="Object" type="i" /> 
+      </script>
+      <digests>
+        <digest type="SHA-256" signed="false" value="78e6cddc89777f086f70d26f6b57fda272ba0fd4160c659048ae3bf5bf4b257f"   />
+      </digests>
+    </library>
+  </libraries>
+  <files>
+  </files>
+</swc>
