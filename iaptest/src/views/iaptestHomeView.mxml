@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" title="iap test">
+	<fx:Script>
+		<![CDATA[
+			import com.adobe.nativeExtensions.AppPurchase;
+			import com.adobe.nativeExtensions.AppPurchaseEvent;
+			import com.adobe.nativeExtensions.Product;
+			import com.adobe.nativeExtensions.Transaction;
+			import com.jamesli.ghostbride.ReceiptVerifier;
+			import com.pialabs.eskimo.controls.SkinnableAlert;
+			
+			import mx.collections.ArrayList;
+			
+			protected function created(event:MouseEvent):void
+			{
+				onAddedToStage(null);
+			}
+			private function onAddedToStage(pEvent:Event):void{
+				initApplication();
+				refreshProducts();
+				restoreTransactions();
+			}
+			private function restoreTransactions():void{
+				AppPurchase.manager.restoreTransactions();
+			}
+			private function initApplication():void{
+				initAppPurchaseExtension();
+			}
+			private function newMsg(pNewMsg:String):void{
+				out.appendText(pNewMsg);
+			}
+			
+			private function initAppPurchaseExtension():void{
+				AppPurchase.manager.addEventListener(AppPurchaseEvent.UPDATED_TRANSACTIONS, onUpdatedTransactions);
+				AppPurchase.manager.addEventListener(AppPurchaseEvent.RESTORE_FAILED, onRestoreFailed);
+				AppPurchase.manager.addEventListener(AppPurchaseEvent.RESTORE_COMPLETE, onRestoreComplete);
+				AppPurchase.manager.addEventListener(AppPurchaseEvent.REMOVED_TRANSACTIONS, onRemovedTransactions);
+				AppPurchase.manager.addEventListener(AppPurchaseEvent.PRODUCTS_RECEIVED,onProducts);
+			}
+			private function refreshProducts():void{
+				rfrshBtn.enabled=false;
+				pdList.visible=false;
+				AppPurchase.manager.getProducts(["rmb","one"]);
+			}
+			
+			private function onProducts(pEvent:AppPurchaseEvent):void{
+				rfrshBtn.enabled=true;
+				pdList.visible=true;
+				pdList.dataProvider=new ArrayList(pEvent.products);
+			}
+			
+			private function onUpdatedTransactions(pEvent:AppPurchaseEvent):void{
+				var output:String = "----------------------------UPDATE TRANSACTION-----------------------------------\n\n";
+				for each(var t:Transaction in pEvent.transactions){
+					if(t.state == Transaction.TRANSACTION_STATE_FAILED){
+						output+="Failed<font color='#ff0000'>";
+					}else if(t.state == Transaction.TRANSACTION_STATE_PUCHASED){
+						output +="Purchased<font color='#00ff00'>";
+					}else if(t.state == Transaction.TRANSACTION_STATE_PUCHASING){
+						output +="Purchasing<font color='#ffff00'>";
+					}else if(t.state == Transaction.TRANSACTION_STATE_RESTORED){
+						output +="Restored<font color='#0000ff'>";
+					}
+					output += "  -----------------------------\nAPP - Printing Transaction" +"\n";
+					output += "Date: " + t.date +"\n";
+					output += "Error: " + t.error+"\n"; 
+					if(t.state == Transaction.TRANSACTION_STATE_RESTORED){
+						output += "Original Product Id: " + t.originalTransaction.productIdentifier+"\n";
+					}else{
+						output += "Product Id: " + t.productIdentifier+"\n";
+					}
+					output += "State: " + t.state+"\n";
+					output += "transaction Identifier: " + t.transactionIdentifier+"\n";
+					if(t.state == Transaction.TRANSACTION_STATE_RESTORED){
+						output += "Original transaction Identifier: " + t.originalTransaction.transactionIdentifier+"\n";
+					}
+					output+="</font>";
+					
+					newMsg(output);
+					output = "";
+					
+					if(t.state == Transaction.TRANSACTION_STATE_PUCHASED){
+						var req:URLRequest = new URLRequest("https://sandbox.itunes.apple.com/verifyReceipt");
+						req.method = URLRequestMethod.POST;
+						req.data = "{\"receipt-data\" : \""+ t.receipt +"\"}";
+						var verifier:ReceiptVerifier = new ReceiptVerifier(req,t);
+						verifier.addEventListener(Event.COMPLETE,function(e:Event):void{
+							var target:ReceiptVerifier = e.target as ReceiptVerifier;
+							newMsg("<font color='#cccccc'>LOAD RECEIPT COMPLETE for " + target.transaction.transactionIdentifier+"\n</font>");
+							provideContent(target.transaction.productIdentifier);
+							AppPurchase.manager.finishTransaction(target.transaction.transactionIdentifier); 
+						});
+						
+					}else if(t.state == Transaction.TRANSACTION_STATE_RESTORED){
+						if(t.originalTransaction.state == Transaction.TRANSACTION_STATE_FAILED 
+							|| t.originalTransaction.state == Transaction.TRANSACTION_STATE_PUCHASED){
+							newMsg("<font color='#666666'>RESTORED TRANSACTION FINISH " + t.transactionIdentifier+"\n</font>");
+							provideContent(t.productIdentifier);
+							AppPurchase.manager.finishTransaction(t.transactionIdentifier);
+						}
+					}else if(t.state == Transaction.TRANSACTION_STATE_FAILED){
+						newMsg("<font color='#666666'>FAILED TRANSACTION FINISH " + t.transactionIdentifier+"\n</font>");
+						AppPurchase.manager.finishTransaction(t.transactionIdentifier);
+					}
+					
+				}
+			}
+			private function onRestoreFailed(pEvent:AppPurchaseEvent):void{
+				newMsg("<font color='#666666'>RESTORE TRANSACTION FAILED\n</font>");
+			}
+			private function onRestoreComplete(pEvent:AppPurchaseEvent):void{
+				newMsg("<font color='#ffffff'>RESTORE TRANSACTION COMPLETED\n</font>");
+			}
+			private function onRemovedTransactions(pEvent:AppPurchaseEvent):void{
+				newMsg("<font color='#666666'>TRANSACTION REMOVED\n</font>");
+			}
+			
+			private function provideContent(pProductId:String):void{
+				newMsg("provideContent"+pProductId);
+			}
+			
+			protected function clickPLIst(event:MouseEvent):void
+			{
+				var s:Product=pdList.selectedItem as Product;
+				var identifier:String=s.identifier;
+				var str:String=s+"";
+				if(s!=null){
+					str+=s.identifier
+				}
+				SkinnableAlert.show(str);
+				if(s!=null&&s.identifier){
+					AppPurchase.manager.startPayment(s.identifier,1);
+				}
+			}
+			
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<s:Button id="rfrshBtn" x="0" y="371" label="刷新" click="refreshProducts()"/>
+	<s:List id="pdList" x="0" y="0" width="100%" height="365" itemRenderer="ProductItem" click="clickPLIst(event)"></s:List>
+	<s:TextArea id="out" y="50" width="100%" height="316" visible="false"/>
+	<s:Button x="61" y="372" label="init" click="created(event)"/>
+	<s:Button x="114" y="373" label="buy" click="clickPLIst(event)"/>
+	<s:Button x="181" y="372" label="outbtn" click="out.visible=!out.visible"/>
+</s:View>
